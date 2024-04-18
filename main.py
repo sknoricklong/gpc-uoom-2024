@@ -8,7 +8,7 @@ from plotly.subplots import make_subplots
 
 # Setup the connection to Google Sheets
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('service_account_gpc.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('../service_account_gpc.json', scope)
 client = gspread.authorize(creds)
 
 # Open the spreadsheet and read data into a DataFrame
@@ -50,11 +50,20 @@ fig1.update_xaxes(title_text="Date")
 fig1.update_yaxes(title_text="Sites Scanned", secondary_y=False)
 fig1.update_yaxes(title_text="GPC Supporting Sites", secondary_y=True)
 
-# Add layout details
+# Add layout details for the first chart
 fig1.update_layout(
     title_text="Sites Scanned and GPC Supporting Sites Over Time",
-    height=400
+    legend=dict(
+        orientation="h",
+        yanchor="top",
+        y=1,
+        xanchor="left",
+        x=0
+    ),
+    height=500,  # Smaller height for the first chart
+    width=700
 )
+
 
 st.plotly_chart(fig1)
 
