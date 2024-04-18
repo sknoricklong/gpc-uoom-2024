@@ -11,22 +11,22 @@ from plotly.subplots import make_subplots
 # Setup the connection to Google Sheets
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 creds_info = {
-    "type": st.secrets["gcp_service_account"]["type"],
-    "project_id": st.secrets["gcp_service_account"]["project_id"],
-    "private_key_id": st.secrets["gcp_service_account"]["private_key_id"],
-    "private_key": st.secrets["gcp_service_account"]["private_key"],
-    "client_email": st.secrets["gcp_service_account"]["client_email"],
-    "client_id": st.secrets["gcp_service_account"]["client_id"],
-    "auth_uri": st.secrets["gcp_service_account"]["auth_uri"],
-    "token_uri": st.secrets["gcp_service_account"]["token_uri"],
-    "auth_provider_x509_cert_url": st.secrets["gcp_service_account"]["auth_provider_x509_cert_url"],
-    "client_x509_cert_url": st.secrets["gcp_service_account"]["client_x509_cert_url"]
+    "type": st.secrets["type"],
+    "project_id": st.secrets["project_id"],
+    "private_key_id": st.secrets["private_key_id"],
+    "private_key": st.secrets["private_key"],
+    "client_email": st.secrets["client_email"],
+    "client_id": st.secrets["client_id"],
+    "auth_uri": st.secrets["auth_uri"],
+    "token_uri": st.secrets["token_uri"],
+    "auth_provider_x509_cert_url": st.secrets["auth_provider_x509_cert_url"],
+    "client_x509_cert_url": st.secrets["client_x509_cert_url"]
 }
 creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_info, scope)
 client = gspread.authorize(creds)
 
 # Open the spreadsheet and read data into a DataFrame
-sheet = client.open_by_url('https://docs.google.com/spreadsheets/d/1GTklMV5aUuRFR6I65ojR2vN7djvy2SEMuYcWWyDLD7k/edit#gid=0')
+sheet = client.open_by_url(f'https://docs.google.com/spreadsheets/d/{st.secrets["sheet_id"]}/edit#gid=0')
 worksheet = sheet.get_worksheet(0)  # assuming the data is in the first sheet
 records = worksheet.get_all_records()
 
