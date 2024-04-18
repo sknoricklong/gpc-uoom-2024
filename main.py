@@ -43,7 +43,7 @@ df['GPC_Support_7_Days_Ago'] = df['GPC_Supporting_Sites'].shift(7)
 df['Total_Percent_Change_from_7_Days_Earlier'] = ((df['GPC_Supporting_Sites'] - df['GPC_Support_7_Days_Ago']) / df['GPC_Support_7_Days_Ago']) * 100
 
 st.title('Daily Dashboard: GPC Awareness')
-
+st.markdown('Based on the optional resource included at a .well-known URL in order for a site to represent the fact that it abides by GPC requests')
 # Create a figure for total sites and GPC supporting sites
 fig1 = make_subplots(specs=[[{"secondary_y": True}]])
 
