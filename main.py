@@ -76,7 +76,7 @@ fig1.update_layout(
         x=0
     ),
     height=500,  # Smaller height for the first chart
-    width=700
+    width=750
 )
 
 
