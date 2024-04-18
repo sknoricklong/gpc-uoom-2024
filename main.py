@@ -92,8 +92,10 @@ fig2.update_layout(
     title_text="Total Percentage Change in GPC Supporting Sites from 7 Days Earlier",
     xaxis_title="Date",
     yaxis_title="Total Change from 7 Days Earlier (%)",
-    height=400
+    height=400,
+    xaxis_range=['2024-04-10', max(df['Date'])]  # Set the x-axis range starting from April 10
 )
+
 
 st.plotly_chart(fig2)
 
