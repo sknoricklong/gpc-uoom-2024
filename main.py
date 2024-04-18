@@ -85,7 +85,7 @@ st.plotly_chart(fig1)
 # Create a second figure for total percentage change from 7 days earlier
 fig2 = go.Figure()
 fig2.add_trace(
-    go.Scatter(x=df['Date'], y=df['Total_Percent_Change_from_7_Days_Earlier'], name="Total % Change from 7 Days Earlier", line=dict(color='green'))
+    go.Scatter(x=df['Date'], y=df['Total_Percent_Change_from_7_Days_Earlier'], name="Total % Change in Last 7 Days", line=dict(color='green'))
 )
 
 fig2.update_layout(
