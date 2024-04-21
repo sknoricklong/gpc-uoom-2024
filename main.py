@@ -131,7 +131,7 @@ fig2.update_layout(
     xaxis_title="Date",
     yaxis_title="Percentage Change (%)",
     height=500,
-    width=900,
+    width=850,
     xaxis_range=['2024-04-10', max(df['Date'])]  # Ensure the x-axis range starts from April 10,
 )
 
