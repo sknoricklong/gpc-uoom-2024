@@ -121,7 +121,7 @@ fig2.add_trace(
 
 # Add trace for the total percentage change in 'GPC Supporting Sites'
 fig2.add_trace(
-    go.Scatter(x=df['Date'], y=df['Total_Percent_Change_from_7_Days_Earlier'], name="GPC % Change")
+    go.Scatter(x=df['Date'], y=df['Total_Percent_Change_from_7_Days_Earlier'], name="GPC Supporting % Change")
 )
 
 
