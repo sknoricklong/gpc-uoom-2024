@@ -1,5 +1,4 @@
-
-
+import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import streamlit as st
@@ -35,6 +34,12 @@ df = pd.DataFrame.from_records(records)
 
 # Convert the Date column to datetime format
 df['Date'] = pd.to_datetime(df['Date']).dt.normalize()
+
+# Display new GPC-supporting sites since yesterday
+if len(df) > 1:
+    new_sites = df['GPC_Supporting_Sites'].iloc[-1] - df['GPC_Supporting_Sites'].iloc[-2]
+    today = datetime.datetime.now().strftime("%B %d")
+    st.success(f"**{today} Update**: {new_sites} new GPC-supporting sites detected today!")
 
 # Calculate GPC supporting sites 7 days ago for percentage calculation
 df['GPC_Support_7_Days_Ago'] = df['GPC_Supporting_Sites'].shift(7)
